@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Afrah Mohammed | Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor"></div>
+
+<header class="site-header">
+    <a href="#" class="logo">Afrah<span>Portfolio</span></a>
+    <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#github">Code</a>
+        <a href="#contact">Contact</a>
+        <span id="userChip" class="user-chip" aria-live="polite"></span>
+        <button id="themeToggle" aria-label="Toggle theme">Dark Mode</button>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="typing-effect">Hi, I'm <span class="highlight">Afrah </span></h1>
+        <p class="subtitle">Computer Science Student at KFUPM  • Creating beautiful digital experiences</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn">See My Work</a>
+            <a href="#contact" class="btn outline">Get In Touch</a>
+        </div>
+        <div class="stats">
+            <div><strong>3+</strong> Projects</div>
+            <div><strong>4+</strong> Years Coding</div>
+            <div><strong>5+</strong> Technologies</div>
+        </div>
+    </div>
+    <div class="particles"></div>
+</section>
+
+<section id="about" class="container section">
+    <h2>About Me</h2>
+    <p>I'm <strong>Afrah Mohammed</strong>, a passionate Computer Science student who loves building clean, interactive, and meaningful web experiences with modern technologies and creative design.</p>
+</section>
+
+<section id="projects" class="container section">
+    <h2>Projects</h2>
+    <div class="controls">
+        <div class="filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="Web">Web</button>
+            <button class="chip" data-filter="Data">Data</button>
+            <button class="chip" data-filter="Presentation">Presentation</button>
+        </div>
+        <div class="search-sort">
+            <input id="searchInput" type="search" placeholder="Search projects…" aria-label="Search projects">
+            <select id="sortSelect">
+                <option value="date-desc">Newest</option>
+                <option value="date-asc">Oldest</option>
+                <option value="title-asc">Title A–Z</option>
+                <option value="title-desc">Title Z–A</option>
+            </select>
+        </div>
+    </div>
+    <div id="projectsList" class="grid projects-grid"></div>
+    <p id="emptyState" class="muted hidden">No projects found.</p>
+</section>
+
+<section id="github" class="container section">
+    <h2>My Latest Code (GitHub)</h2>
+    <div id="githubRepos" class="grid projects-grid"></div>
+    <div id="githubSpinner" class="spinner-container">
+        <span class="spinner"></span> Loading repositories...
+    </div>
+    <p id="githubError" class="error hidden">Could not load repositories.</p>
+</section>
+
+
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <h2>Contact Me</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+                <p>I'm always excited to work on new projects and ideas. Feel free to reach out!</p>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:afrah3000r@gmail.com">afrah3000r@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <a href="tel:+966597306601">0597306601</a>
+                </div>
+            </div>
+            <form id="contactForm" novalidate class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="6" placeholder="Your Message..." required minlength="10"></textarea>
+                <button type="submit" class="btn">Send Message</button>
+                <p id="formStatus" class="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Name Gate -->
+<div id="nameGate" class="gate" role="dialog" aria-modal="true">
+    <div class="gate-card">
+        <h3>Welcome!</h3>
+        <p class="muted">What's your name?</p>
+        <form id="nameGateForm">
+            <input id="nameInput" type="text" placeholder="Enter your name" required>
+            <button type="submit" class="btn">Let's Go</button>
+        </form>
+    </div>
+</div>
+
+<button id="backToTop" title="Back to top">Up</button>
+
+<script src="script.js"></script>
+</body>
+</html>
