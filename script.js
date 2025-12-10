@@ -51,40 +51,60 @@ document.addEventListener('mousemove', (e) => {
     cursor.style.top = e.clientY + 'px';
 });
 
-/* GitHub Repos */
+
 const githubListEl = document.getElementById('githubRepos');
 const githubSpinnerEl = document.getElementById('githubSpinner');
 const githubErrorEl = document.getElementById('githubError');
-const GITHUB_USERNAME = 'Afrah-F';
-const REPOS_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`;
 
 async function loadGitHubRepos() {
     githubSpinnerEl.style.display = 'flex';
     githubErrorEl.classList.add('hidden');
+    githubListEl.innerHTML = '';
+
     try {
-        const res = await fetch(REPOS_URL, { cache: 'no-store' });
-        if (!res.ok) throw new Error('Failed');
-        const repos = await res.json();
-        githubListEl.innerHTML = '';
+        // 
+        const response = await fetch(`https://api.allorigins.ml/get?url=${encodeURIComponent('https://api.github.com/users/Afrah-F/repos?sort=updated&per_page=6')}`);
+        
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        const repos = JSON.parse(data.contents);
+
         repos.slice(0, 6).forEach(repo => {
             const card = document.createElement('article');
             card.className = 'project-card fade-in';
             card.innerHTML = `
-        <div class="project-body">
-          <h3>${repo.name}</h3>
-          <div class="project-meta">${repo.language || 'Code'} • ${new Date(repo.updated_at).toLocaleDateString()}</div>
-          <p>${repo.description || 'No description'}</p>
-          <a href="${repo.html_url}" target="_blank" class="btn small">View Repo</a>
-        </div>
-      `;
+                <div class="project-body">
+                    <h3>${repo.name.replace(/-/g, ' ')}</h3>
+                    <div class="project-meta">
+                        ${repo.language || 'Various'} • ${new Date(repo.updated_at).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})}
+                    </div>
+                    <p>${repo.description || 'No description available.'}</p>
+                    <a href="${repo.html_url}" target="_blank" class="btn small">View on GitHub</a>
+                </div>
+            `;
             githubListEl.appendChild(card);
         });
+
     } catch (err) {
-        githubErrorEl.classList.remove('hidden');
+        githubListEl.innerHTML = `
+            <div style="grid-column: 1/-1; text-align:center; padding:40px; background:var(--bg-soft); border-radius:16px;">
+                <p style="font-size:1.1rem; color:var(--muted); margin-bottom:16px;">
+                    GitHub API limit reached (normal for public demos)
+                </p>
+                <p style="color:var(--text);">
+                    Visit my GitHub directly: 
+                    <a href="https://github.com/Afrah-F" target="_blank" style="color:var(--primary); font-weight:700;">
+                        github.com/Afrah-F
+                    </a>
+                </p>
+            </div>
+        `;
     } finally {
         githubSpinnerEl.style.display = 'none';
     }
 }
+
 document.addEventListener('DOMContentLoaded', loadGitHubRepos);
 
 /* Projects */
