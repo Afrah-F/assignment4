@@ -89,9 +89,9 @@ document.addEventListener('DOMContentLoaded', loadGitHubRepos);
 
 /* Projects */
 const projects = [
-    { title: 'CLUBZONE Platform', category: 'Web', date: '2025-01-10', img: 'assets/images/club.png', summary: 'A web platform to manage and join student clubs.', details: 'Built with HTML, CSS, JS & Firebase.' },
-    { title: 'Online Gaming Data Analysis', category: 'Data', date: '2024-04-01', img: 'assets/images/online.png', summary: 'Collected and analyzed player data with visual insights.', details: 'Python, Pandas, Matplotlib & Power BI.' },
-    { title: 'Saudi Electricity Investment', category: 'Presentation', date: '2024-05-16', img: 'assets/images/elec.png', summary: 'English presentation on investment benefits.', details: 'Research, writing, and public speaking skills.' }
+    { title: 'CLUBZONE Platform', category: 'Web', date: '2025-01-10', img: 'assets/club.png', summary: 'A web platform to manage and join student clubs.', details: 'Built with HTML, CSS, JS & Firebase.' },
+    { title: 'Online Gaming Data Analysis', category: 'Data', date: '2024-04-01', img: 'assets/online.png', summary: 'Collected and analyzed player data with visual insights.', details: 'Python, Pandas, Matplotlib & Power BI.' },
+    { title: 'Saudi Electricity Investment', category: 'Presentation', date: '2024-05-16', img: 'assets/elec.png', summary: 'English presentation on investment benefits.', details: 'Research, writing, and public speaking skills.' }
 ];
 
 const listEl = document.getElementById('projectsList');
